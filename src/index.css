@@ -31,7 +31,7 @@ body {
   background: var(--color-bg);
   color: var(--color-white);
   line-height: 1.7;
-  background-image: url(../src/assets/logo.jpg);
+  background-image: url(../src/assets/cosmos.jpg);
 }
 
 container {
@@ -80,4 +80,32 @@ a:hover {
   background: var(--color-white);
   color: var(--color-bg);
   background-color: transparent;
+}
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 1024px){
+  .container {
+    width: var(--container-width-md);
+  }
+  section {
+    margin-top: 6rem;
+  }
+}
+@media screen and (max-width: 600px){
+  .container {
+    width: var(--container-width-sm);
+  }
+  section > h2 {
+    margin-bottom: 2rem;
+  }
 }
