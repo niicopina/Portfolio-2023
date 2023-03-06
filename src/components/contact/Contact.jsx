@@ -3,8 +3,21 @@ import './contact.css'
 import {MdOutlineEmail} from 'react-icons/md'
 import {BsLinkedin} from 'react-icons/bs'
 import {BsTelephone} from 'react-icons/bs'
+import { useRef } from 'react';
+import emailjs from 'emailjs-com'
 
 const Contact = () => {
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_75irvrr', 'template_7md359o', form.current, 'ceYyB-ULaZIyqPEsT')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
   return (
     <section id='contact'>
       <h5>Get in Touch</h5>
@@ -31,14 +44,12 @@ const Contact = () => {
             <a href="https://www.linkedin.com/in/nicolas-agustin-pina/" target="_blank">Send a message</a>
           </article>
         </div>
-        <form action="">
+        <form ref={form} onSubmit={sendEmail}>
           <input type="text" name='name' placeholder='Your full name' required />
           <input type="email" name='email' placeholder='Your Email' required />
           <textarea name="message" rows="7" placeholder='Your Message' required></textarea>
           <button type='submit' className='btn btn-primary'>Send Message</button>
         </form>
-
-        <form action=""></form>
       </div>
     </section>
   )
